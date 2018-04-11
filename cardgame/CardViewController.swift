@@ -59,7 +59,8 @@ class CardViewController: UIViewController {
         UIImage(named: "蚊香蝌蚪.png")!,
         UIImage(named: "迷你龙.png")!,
         UIImage(named: "喵喵.png")!,
-        UIImage(named: "超音蝠.png")!
+        UIImage(named: "超音蝠.png")!,
+        UIImage(named: "peter.png")!
     ]
 
     
