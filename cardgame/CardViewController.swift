@@ -38,29 +38,85 @@ class CardViewController: UIViewController {
     
     var CardBt : [UIButton] = [UIButton]()
     
-    let CardImage: [UIImage] = [
-        UIImage(named: "神奇寶貝球")!,
-        UIImage(named: "小火龍.png")!,
-        UIImage(named: "六尾.png")!,
-        UIImage(named: "毛球.png")!,
-        UIImage(named: "火暴猴.png")!,
-        UIImage(named: "卡蒂狗.png")!,
-        UIImage(named: "可达鸭.png")!,
-        UIImage(named: "皮卡丘.png")!,
-        UIImage(named: "皮皮.png")!,
-        UIImage(named: "地鼠.png")!,
-        UIImage(named: "妙蛙种子.png")!,
-        UIImage(named: "走路草.png")!,
-        UIImage(named: "凯西.png")!,
-        UIImage(named: "杰尼龟.png")!,
-        UIImage(named: "波波.png")!,
-        UIImage(named: "阿柏蛇.png")!,
-        UIImage(named: "胖丁.png")!,
-        UIImage(named: "蚊香蝌蚪.png")!,
-        UIImage(named: "迷你龙.png")!,
-        UIImage(named: "喵喵.png")!,
-        UIImage(named: "超音蝠.png")!,
-        UIImage(named: "peter.png")!
+    let CardImage: [[UIImage]] = [
+        [
+            UIImage(named: "神奇寶貝球")!,
+            UIImage(named: "小火龍.png")!,
+            UIImage(named: "六尾.png")!,
+            UIImage(named: "毛球.png")!,
+            UIImage(named: "火暴猴.png")!,
+            UIImage(named: "卡蒂狗.png")!,
+            UIImage(named: "可达鸭.png")!,
+            UIImage(named: "皮卡丘.png")!,
+            UIImage(named: "皮皮.png")!,
+            UIImage(named: "地鼠.png")!,
+            UIImage(named: "妙蛙种子.png")!,
+            UIImage(named: "走路草.png")!,
+            UIImage(named: "凯西.png")!,
+            UIImage(named: "杰尼龟.png")!,
+            UIImage(named: "波波.png")!,
+            UIImage(named: "阿柏蛇.png")!,
+            UIImage(named: "胖丁.png")!,
+            UIImage(named: "蚊香蝌蚪.png")!,
+            UIImage(named: "迷你龙.png")!,
+            UIImage(named: "喵喵.png")!,
+            UIImage(named: "超音蝠.png")!,
+            UIImage(named: "peter.png")!
+        ],
+        [
+            UIImage(named: "animal")!,
+            UIImage(named: "animal1")!,
+            UIImage(named: "animal2")!,
+            UIImage(named: "animal3")!,
+            UIImage(named: "animal4")!,
+            UIImage(named: "animal5")!,
+            UIImage(named: "animal6")!,
+            UIImage(named: "animal7")!,
+            UIImage(named: "animal8")!,
+            UIImage(named: "animal9")!,
+            UIImage(named: "animal10")!,
+            UIImage(named: "animal11")!,
+            UIImage(named: "animal12")!,
+            UIImage(named: "animal13")!,
+            UIImage(named: "animal14")!,
+            UIImage(named: "animal15")!,
+            UIImage(named: "animal16")!,
+            UIImage(named: "animal17")!,
+            UIImage(named: "animal18")!,
+            UIImage(named: "animal19")!,
+            UIImage(named: "animal20")!,
+        ],
+        [
+            UIImage(named: "Transportation")!,
+            UIImage(named: "Transportation1")!,
+            UIImage(named: "Transportation2")!,
+            UIImage(named: "Transportation3")!,
+            UIImage(named: "Transportation4")!,
+            UIImage(named: "Transportation5")!,
+            UIImage(named: "Transportation6")!,
+            UIImage(named: "Transportation7")!,
+            UIImage(named: "Transportation8")!,
+            UIImage(named: "Transportation9")!,
+            UIImage(named: "Transportation10")!,
+            UIImage(named: "Transportation11")!,
+            UIImage(named: "Transportation12")!,
+            UIImage(named: "Transportation13")!,
+            UIImage(named: "Transportation14")!,
+            UIImage(named: "Transportation15")!,
+        ],
+        [
+            UIImage(named: "color")!,
+            UIImage(named: "color1")!,
+            UIImage(named: "color2")!,
+            UIImage(named: "color3")!,
+            UIImage(named: "color4")!,
+            UIImage(named: "color5")!,
+            UIImage(named: "color6")!,
+            UIImage(named: "color7")!,
+            UIImage(named: "color8")!,
+            UIImage(named: "color9")!,
+            UIImage(named: "color10")!,
+        ],
     ]
 
     
@@ -69,6 +125,7 @@ class CardViewController: UIViewController {
     var fristCard:Int = 0
     var secondCard:Int = 0
     var bingoNumber = 0
+    var theme = 0
     
     var counter = 0.0
     var timer = Timer()
@@ -141,12 +198,12 @@ class CardViewController: UIViewController {
         switch gameStep{
         case 1:
             fristCard = cardNumber
-            CardBt[fristCard].setImage(CardImage[AnswerCard[fristCard]],for: UIControlState.normal)
+            CardBt[fristCard].setImage(CardImage[theme][AnswerCard[fristCard]],for: UIControlState.normal)
             gameStep=2
         case 2:
             if(fristCard != cardNumber){
                 secondCard = cardNumber
-                CardBt[secondCard].setImage(CardImage[AnswerCard[secondCard]],for: UIControlState.normal)
+                CardBt[secondCard].setImage(CardImage[theme][AnswerCard[secondCard]],for: UIControlState.normal)
                 gameStep=3
             }
             
@@ -160,7 +217,7 @@ class CardViewController: UIViewController {
                     gameStep=0
                     
                     for i in 0...(CardBt.count-1){
-                        CardBt[i].setImage(CardImage[AnswerCard[i]],for: UIControlState.normal)
+                        CardBt[i].setImage(CardImage[theme][AnswerCard[i]],for: UIControlState.normal)
                         CardBt[i].backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
                         CardBt[i].isEnabled = true
                     }
@@ -189,16 +246,16 @@ class CardViewController: UIViewController {
                 
                 if((cardNumber != fristCard) && (cardNumber != secondCard)){
                     fristCard = cardNumber
-                    CardBt[fristCard].setImage(CardImage[AnswerCard[fristCard]],for: UIControlState.normal)
+                    CardBt[fristCard].setImage(CardImage[theme][AnswerCard[fristCard]],for: UIControlState.normal)
                     gameStep=2
                 }
             }else{
-                CardBt[fristCard].setImage(CardImage[0],for: UIControlState.normal)
-                CardBt[secondCard].setImage(CardImage[0],for: UIControlState.normal)
+                CardBt[fristCard].setImage(CardImage[theme][0],for: UIControlState.normal)
+                CardBt[secondCard].setImage(CardImage[theme][0],for: UIControlState.normal)
                 
                 
                 fristCard = cardNumber
-                CardBt[fristCard].setImage(CardImage[AnswerCard[fristCard]],for: UIControlState.normal)
+                CardBt[fristCard].setImage(CardImage[theme][AnswerCard[fristCard]],for: UIControlState.normal)
                 gameStep=2
             }
             
@@ -209,11 +266,13 @@ class CardViewController: UIViewController {
     
     func creatTopic(){
         var cardBuf:[Int] = [Int]()
-        let randomDistribution = GKShuffledDistribution(lowestValue: 1, highestValue:CardImage.count-1)
+        let randomDistribution1 = GKRandomDistribution(lowestValue: 0, highestValue: CardImage.count - 1)
+        theme = randomDistribution1.nextInt()
         
+        let randomDistribution2 = GKShuffledDistribution(lowestValue: 1, highestValue:CardImage[theme].count-1)
         //產生十個問題index
         for _ in 0...9{
-            cardBuf.append(randomDistribution.nextInt())
+            cardBuf.append(randomDistribution2.nextInt())
         }
         
         //copy 十個問題index
@@ -223,9 +282,9 @@ class CardViewController: UIViewController {
         
         //亂數排序問題
         AnswerCard.removeAll()
-        let randomDistribution1 = GKShuffledDistribution(lowestValue: 0, highestValue:cardBuf.count-1)
+        let randomDistribution3 = GKShuffledDistribution(lowestValue: 0, highestValue:cardBuf.count-1)
         for _ in 0...(cardBuf.count-1){
-            AnswerCard.append(cardBuf[randomDistribution1.nextInt()])
+            AnswerCard.append(cardBuf[randomDistribution3.nextInt()])
         }
         
         gameStep = 0
@@ -243,8 +302,8 @@ class CardViewController: UIViewController {
         scoreLable.text = String(format: "得分\n%04d", 0)
         
           for i in 0...(CardBt.count-1){
-//            CardBt[i].setImage(CardImage[0],for: UIControlState.normal)
-            CardBt[i].setImage(CardImage[AnswerCard[i]],for: UIControlState.normal)
+//            CardBt[i].setImage(CardImage[theme][0],for: UIControlState.normal)
+            CardBt[i].setImage(CardImage[theme][AnswerCard[i]],for: UIControlState.normal)
             CardBt[i].backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
             CardBt[i].isEnabled=true
         }
@@ -266,7 +325,7 @@ class CardViewController: UIViewController {
             counter = 0.0
             gameStep = 1
             for i in 0...(CardBt.count-1){
-               CardBt[i].setImage(CardImage[0],for: UIControlState.normal)
+               CardBt[i].setImage(CardImage[theme][0],for: UIControlState.normal)
             }
             countdownLable.isHidden=true
         }
