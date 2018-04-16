@@ -61,7 +61,7 @@ class CardViewController: UIViewController {
             UIImage(named: "迷你龙.png")!,
             UIImage(named: "喵喵.png")!,
             UIImage(named: "超音蝠.png")!,
-            UIImage(named: "peter.png")!
+//            UIImage(named: "peter.png")!
         ],
         [
             UIImage(named: "animal")!,
@@ -157,10 +157,6 @@ class CardViewController: UIViewController {
         CardBt.append(CardBt19)
         CardBt.append(CardBt20)
         
-        for bt in CardBt{
-            bt.imageView!.contentMode = UIViewContentMode.scaleAspectFit
-        }
-        
         creatTopic()
     }
 
@@ -205,35 +201,35 @@ class CardViewController: UIViewController {
                 secondCard = cardNumber
                 CardBt[secondCard].setImage(CardImage[theme][AnswerCard[secondCard]],for: UIControlState.normal)
                 gameStep=3
-            }
-            
-            if(AnswerCard[fristCard] == AnswerCard[secondCard]){
-                score+=100
-                bingoNumber+=1
                 
-                print("bingoNumber=\(bingoNumber)")
-                if(bingoNumber >= 10){
-                    timer.invalidate()
-                    gameStep=0
+                if(AnswerCard[fristCard] == AnswerCard[secondCard]){
+                    score+=100
+                    bingoNumber+=1
                     
-                    for i in 0...(CardBt.count-1){
-                        CardBt[i].setImage(CardImage[theme][AnswerCard[i]],for: UIControlState.normal)
-                        CardBt[i].backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
-                        CardBt[i].isEnabled = true
+                    print("bingoNumber=\(bingoNumber)")
+                    if(bingoNumber >= 10){
+                        timer.invalidate()
+                        gameStep=0
+                        
+                        for i in 0...(CardBt.count-1){
+                            CardBt[i].setImage(CardImage[theme][AnswerCard[i]],for: UIControlState.normal)
+                            CardBt[i].backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
+                            CardBt[i].isEnabled = true
+                        }
+                        
+                        
+                        let minutesLeft = Int(counter / 60) % 60
+                        let secondsLeft = Int(counter) % 60
+                        let minisecondsLeft = Int(counter*10) % 10
+                        let total = score - Int(counter)
+                        resultLable.isHidden=false
+                        resultLable.text=String(format: "遊戲結果\n花費時間\n%02d:%02d.%01d\n\n得分\n%d\n\n總分\n%d", minutesLeft ,secondsLeft, minisecondsLeft,score,total)
                     }
-                    
-                    
-                    let minutesLeft = Int(counter / 60) % 60
-                    let secondsLeft = Int(counter) % 60
-                    let minisecondsLeft = Int(counter*10) % 10
-                    let total = score - Int(counter)
-                    resultLable.isHidden=false
-                    resultLable.text=String(format: "結果\n花費時間\n%02d:%02d.%01d\n\n得分\n%d\n\n總分\n%d", minutesLeft ,secondsLeft, minisecondsLeft,score,total)
+                }else{
+                    score-=10
                 }
-            }else{
-                score-=10
+                scoreLable.text = String(format: "得分\n%04d", score)
             }
-            scoreLable.text = String(format: "得分\n%04d", score)
                             
         case 3:
             if(AnswerCard[fristCard] == AnswerCard[secondCard]){
@@ -306,6 +302,12 @@ class CardViewController: UIViewController {
             CardBt[i].setImage(CardImage[theme][AnswerCard[i]],for: UIControlState.normal)
             CardBt[i].backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 1.0, alpha: 1.0)
             CardBt[i].isEnabled=true
+            
+            if(theme == 3){
+                CardBt[i].imageView!.contentMode = UIViewContentMode.scaleToFill
+            }else{
+                CardBt[i].imageView!.contentMode = UIViewContentMode.scaleAspectFit
+            }
         }
 
         for bt in CardBt{

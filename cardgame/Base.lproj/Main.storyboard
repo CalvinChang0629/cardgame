@@ -28,8 +28,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQg-eP-tYx">
-                                        <rect key="frame" x="138" y="1.6666666666666679" width="138" height="52"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                        <rect key="frame" x="138" y="1" width="138" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                         <state key="normal" title="重新開始"/>
                                         <connections>
                                             <action selector="reStart:" destination="BYZ-38-t0r" eventType="touchDown" id="ctC-4K-0mD"/>
